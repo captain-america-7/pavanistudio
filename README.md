@@ -12,7 +12,6 @@ A premium, modern web presence for Pavani Studio.
 - `about.html`: About the studio
 - `services.html`: Services offered
 - `portfolio.html`: Showcase of work
-- `contact.html`: Contact information
 - `css/style.css`: Main styling
 - `js/script.js`: Interactive elements
 
