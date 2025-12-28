@@ -2,7 +2,8 @@ document.addEventListener('DOMContentLoaded', () => {
     // Navigation Scroll Effect
     const header = document.querySelector('.main-header');
 
-    const isHomePage = window.location.pathname.endsWith('index.html') || window.location.pathname.endsWith('/') || window.location.pathname === '';
+    const path = window.location.pathname;
+    const isHomePage = path === '/' || path === '/index' || path.endsWith('/index.html') || path === '';
 
     const updateHeader = () => {
         if (window.scrollY > 50 || !isHomePage) {
