@@ -152,3 +152,68 @@ document.addEventListener('DOMContentLoaded', () => {
     //     }, 5000);
     // }
 });
+
+// Photo Slideshow Logic
+let currentSlideIndex = 0;
+let autoplayInterval;
+let isAutoplayRunning = true;
+
+function showSlide(n) {
+    const slides = document.querySelectorAll('.slide');
+    const dots = document.querySelectorAll('.dot');
+
+    if (slides.length === 0) return;
+
+    if (n >= slides.length) currentSlideIndex = 0;
+    else if (n < 0) currentSlideIndex = slides.length - 1;
+    else currentSlideIndex = n;
+
+    slides.forEach(slide => slide.classList.remove('active'));
+    dots.forEach(dot => dot.classList.remove('active'));
+
+    slides[currentSlideIndex].classList.add('active');
+    if (dots.length > 0) dots[currentSlideIndex].classList.add('active');
+}
+
+function changeSlide(direction) {
+    showSlide(currentSlideIndex + direction);
+    stopAutoplay(); // Stop on manual interaction
+}
+
+function goToSlide(n) {
+    showSlide(n);
+    stopAutoplay(); // Stop on manual interaction
+}
+
+function startAutoplay() {
+    if (document.querySelectorAll('.slide').length === 0) return;
+    
+    autoplayInterval = setInterval(() => {
+        showSlide(currentSlideIndex + 1);
+    }, 4000);
+    isAutoplayRunning = true;
+    const toggleBtn = document.querySelector('.autoplay-toggle');
+    if (toggleBtn) toggleBtn.textContent = '⏸ Pause Autoplay';
+}
+
+function stopAutoplay() {
+    clearInterval(autoplayInterval);
+    isAutoplayRunning = false;
+    const toggleBtn = document.querySelector('.autoplay-toggle');
+    if (toggleBtn) toggleBtn.textContent = '▶ Start Autoplay';
+}
+
+function toggleAutoplay() {
+    if (isAutoplayRunning) {
+        stopAutoplay();
+    } else {
+        startAutoplay();
+    }
+}
+
+// Initialize on page load if elements exist
+document.addEventListener('DOMContentLoaded', () => {
+    if (document.querySelector('.slideshow-container')) {
+        startAutoplay();
+    }
+});

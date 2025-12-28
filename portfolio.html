@@ -41,81 +41,100 @@
         </div>
     </section>
 
-    <!-- Full Portfolio -->
+    <!-- Photo Slideshow Portfolio -->
     <section id="portfolio" class="portfolio-section section-padding">
         <div class="container">
-            <div class="portfolio-grid">
-                <!-- 1: User Image 1 -->
-                <div class="portfolio-item fade-in">
+            <div class="slideshow-container">
+                <!-- Slide 1 -->
+                <div class="slide active">
                     <img src="images/portfolio-user-1.jpg" alt="Wedding">
-                    <div class="overlay">
+                    <div class="slide-caption">
                         <h3>Bride Portrait</h3>
                         <p>Wedding</p>
                     </div>
                 </div>
-                <!-- 2: User Image 2 -->
-                <div class="portfolio-item fade-in">
+                <!-- Slide 2 -->
+                <div class="slide">
                     <img src="images/portfolio-user-2.jpg" alt="Portrait">
-                    <div class="overlay">
+                    <div class="slide-caption">
                         <h3>Cinematic B&W</h3>
                         <p>Portrait</p>
                     </div>
                 </div>
-                <!-- 3 -->
-                <div class="portfolio-item fade-in">
+                <!-- Slide 3 -->
+                <div class="slide">
                     <img src="images/portfolio-item-3.jpg" alt="Pre-Wedding">
-                    <div class="overlay">
+                    <div class="slide-caption">
                         <h3>Priya & Amit</h3>
                         <p>Pre-Wedding</p>
                     </div>
                 </div>
-                <!-- 4 -->
-                <div class="portfolio-item fade-in">
+                <!-- Slide 4 -->
+                <div class="slide">
                     <img src="images/portfolio-item-4.jpg" alt="Portrait">
-                    <div class="overlay">
+                    <div class="slide-caption">
                         <h3>Fashion Edit</h3>
                         <p>Portrait</p>
                     </div>
                 </div>
-                <!-- 5 -->
-                <div class="portfolio-item fade-in">
+                <!-- Slide 5 -->
+                <div class="slide">
                     <img src="images/portfolio-item-5.jpg" alt="Wedding">
-                    <div class="overlay">
+                    <div class="slide-caption">
                         <h3>Royal Palace</h3>
                         <p>Wedding</p>
                     </div>
                 </div>
-                <!-- 6: Home Tour -->
-                <div class="portfolio-item fade-in">
+                <!-- Slide 6 -->
+                <div class="slide">
                     <img src="images/home-tour.png" alt="Home Tour">
-                    <div class="overlay">
+                    <div class="slide-caption">
                         <h3>Luxury Villa Tour</h3>
                         <p>Architecture</p>
                     </div>
                 </div>
-                <!-- 7 -->
-                <div class="portfolio-item fade-in">
+                <!-- Slide 7 -->
+                <div class="slide">
                     <img src="images/portfolio-item-7.jpg" alt="Haldi">
-                    <div class="overlay">
+                    <div class="slide-caption">
                         <h3>Haldi Ceremony</h3>
                         <p>Wedding</p>
                     </div>
                 </div>
-                <!-- 8 -->
-                <div class="portfolio-item fade-in">
+                <!-- Slide 8 -->
+                <div class="slide">
                     <img src="images/portfolio-item-8.jpg" alt="Couple">
-                    <div class="overlay">
+                    <div class="slide-caption">
                         <h3>Couple Session</h3>
                         <p>Outdoor</p>
                     </div>
                 </div>
-                <!-- 9 -->
-                <div class="portfolio-item fade-in">
+                <!-- Slide 9 -->
+                <div class="slide">
                     <img src="images/portfolio-item-9.jpg" alt="Sangeet">
-                    <div class="overlay">
+                    <div class="slide-caption">
                         <h3>Sangeet Night</h3>
                         <p>Wedding</p>
                     </div>
+                </div>
+
+                <!-- Navigation Buttons -->
+                <button class="nav-btn prev" onclick="changeSlide(-1)">❮</button>
+                <button class="nav-btn next" onclick="changeSlide(1)">❯</button>
+
+                <!-- Dots & Controls -->
+                <div class="dots-container">
+                    <span class="dot active" onclick="goToSlide(0)"></span>
+                    <span class="dot" onclick="goToSlide(1)"></span>
+                    <span class="dot" onclick="goToSlide(2)"></span>
+                    <span class="dot" onclick="goToSlide(3)"></span>
+                    <span class="dot" onclick="goToSlide(4)"></span>
+                    <span class="dot" onclick="goToSlide(5)"></span>
+                    <span class="dot" onclick="goToSlide(6)"></span>
+                    <span class="dot" onclick="goToSlide(7)"></span>
+                    <span class="dot" onclick="goToSlide(8)"></span>
+                    <br>
+                    <button class="autoplay-toggle" onclick="toggleAutoplay()">⏸ Pause Autoplay</button>
                 </div>
             </div>
         </div>
