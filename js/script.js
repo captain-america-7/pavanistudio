@@ -236,46 +236,30 @@ document.addEventListener('DOMContentLoaded', () => {
         startAutoplay();
     }
 
-    // Contact Form Handler (EmailJS)
+    // Contact Form Handler (WhatsApp Redirection)
     const contactForm = document.querySelector('.contact-form');
     if (contactForm) {
         contactForm.addEventListener('submit', (e) => {
             e.preventDefault();
 
-            const submitBtn = contactForm.querySelector('button[type="submit"]');
-            const originalBtnText = submitBtn.innerText;
-            submitBtn.innerText = 'Sending...';
-            submitBtn.disabled = true;
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const phone = document.getElementById('phone').value;
+            const service = document.getElementById('service').value;
+            const message = document.getElementById('message').value;
 
-            // These IDs from your EmailJS dashboard
-            const serviceID = 'YOUR_SERVICE_ID';
-            const templateID = 'YOUR_TEMPLATE_ID';
+            // Construct the WhatsApp message
+            const whatsappMessage = `Hello Pavani Studios,%0A%0AI would like to enquire about *${service}*.%0A%0A*Name:* ${name}%0A*Email:* ${email}%0A*Phone:* ${phone}%0A*Message:* ${message}`;
 
-            // Parameters to match your EmailJS template
-            const templateParams = {
-                from_name: document.getElementById('name').value,
-                from_email: document.getElementById('email').value,
-                phone: document.getElementById('phone').value,
-                service: document.getElementById('service').value,
-                message: document.getElementById('message').value,
-                to_name: 'Pavani Studios',
-            };
+            // Target WhatsApp Number (from footer link)
+            const phoneNumber = '918341847112';
 
-            emailjs.send(serviceID, templateID, templateParams)
-                .then(() => {
-                    submitBtn.innerText = 'Message Sent!';
-                    alert('Thank you! Your message has been sent successfully. We will get back to you soon.');
-                    contactForm.reset();
-                    setTimeout(() => {
-                        submitBtn.innerText = originalBtnText;
-                        submitBtn.disabled = false;
-                    }, 3000);
-                }, (err) => {
-                    submitBtn.innerText = originalBtnText;
-                    submitBtn.disabled = false;
-                    alert('Failed to send message. Please check your internet connection or try again later.\nError: ' + JSON.stringify(err));
-                    console.error('EmailJS Error:', err);
-                });
+            // Open WhatsApp
+            const whatsappURL = `https://wa.me/${phoneNumber}?text=${whatsappMessage}`;
+            window.open(whatsappURL, '_blank');
+
+            // Optional: Reset form or show success message on page
+            contactForm.reset();
         });
     }
 
@@ -295,13 +279,13 @@ document.addEventListener('DOMContentLoaded', () => {
                 title: "Ajay weds Sweety",
                 category: "Wedding Photography",
                 tabs: {
-                    "engagement": ["images/portfolio-item-5.jpg", "images/portfolio-item-7.jpg", "images/portfolio-item-8.jpg"],
-                    "pre-wedding": ["images/portfolio-item-3.jpg", "images/portfolio-user-2.jpg", "images/portfolio-item-4.jpg"],
-                    "sangeet": ["images/portfolio-item-9.jpg", "images/portfolio-user-1.jpg"],
-                    "marriage": ["images/portfolio-user-1.jpg", "images/portfolio-item-5.jpg", "images/portfolio-item-7.jpg"],
-                    "reception": ["images/portfolio-item-8.jpg", "images/portfolio-item-9.jpg"],
-                    "highlights": ["images/portfolio-user-1.jpg", "images/portfolio-user-2.jpg"],
-                    "videos": [] // Video placeholders if needed
+                    "engagement": ["images/portfolio-item-5.jpg", "images/portfolio-item-11.jpg", "images/portfolio-item-12.jpg", "images/portfolio-item-7.jpg"],
+                    "pre-wedding": ["images/portfolio-item-3.jpg", "images/portfolio-user-2.jpg", "images/portfolio-item-4.jpg", "images/client-anita-rohan.png"],
+                    "sangeet": ["images/portfolio-item-9.jpg", "images/portfolio-user-1.jpg", "images/recent-1.jpg"],
+                    "marriage": ["images/portfolio-user-1.jpg", "images/portfolio-item-5.jpg", "images/portfolio-item-8.jpg", "images/client-sita-ram.png"],
+                    "reception": ["images/portfolio-item-8.jpg", "images/portfolio-item-10.jpg", "images/recent-2.jpg"],
+                    "highlights": ["images/portfolio-user-1.jpg", "images/portfolio-item-12.jpg", "images/hero-bg.jpg"],
+                    "videos": [] // Video placeholders to be added
                 }
             },
             "rohan-meera": {

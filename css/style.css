@@ -373,8 +373,9 @@ img {
 }
 
 .timeline-item:hover .timeline-content h2 {
-    opacity: 0.1;
+    opacity: 0.3;
     transform: scale(1.1);
+    text-shadow: 0 0 20px rgba(212, 175, 55, 0.4);
 }
 
 /* Content Details */
@@ -1486,4 +1487,16 @@ img {
         font-size: 0.9rem;
         padding: 8px 15px;
     }
+}
+}
+
+/* Founder Image Glow */
+.founder-img {
+    transition: all 0.4s ease;
+}
+
+.founder-img:hover {
+    box-shadow: 0 0 30px var(--primary-color), 0 0 60px rgba(212, 175, 55, 0.4) !important;
+    border-color: #fff !important;
+    transform: scale(1.02);
 }
