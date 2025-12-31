@@ -284,7 +284,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     "sangeet": ["images/portfolio-item-9.jpg", "images/portfolio-user-1.jpg", "images/recent-1.jpg"],
                     "marriage": ["images/portfolio-user-1.jpg", "images/portfolio-item-5.jpg", "images/portfolio-item-8.jpg", "images/client-sita-ram.png"],
                     "reception": ["images/portfolio-item-8.jpg", "images/portfolio-item-10.jpg", "images/recent-2.jpg"],
-                    "highlights": ["images/portfolio-user-1.jpg", "images/portfolio-item-12.jpg", "images/hero-bg.jpg"],
+                    "highlights": ["images/portfolio-user-1.jpg", "images/portfolio-item-12.jpg", "images/hero-bg-premium.png"],
                     "videos": [] // Video placeholders to be added
                 }
             },
@@ -292,16 +292,38 @@ document.addEventListener('DOMContentLoaded', () => {
                 title: "Rohan & Meera",
                 category: "Pre-Wedding Shoot",
                 tabs: {
-                    "engagement": [],
-                    "pre-wedding": ["images/portfolio-item-3.jpg", "images/portfolio-item-4.jpg"],
-                    "sangeet": [],
-                    "marriage": [],
-                    "reception": [],
+                    "engagement": ["images/portfolio-item-3.jpg", "images/portfolio-item-4.jpg"],
+                    "pre-wedding": ["images/portfolio-item-3.jpg", "images/portfolio-item-4.jpg", "images/portfolio-item-11.jpg"],
+                    "sangeet": ["images/portfolio-item-9.jpg"],
+                    "marriage": ["images/portfolio-item-5.jpg"],
+                    "reception": ["images/portfolio-item-8.jpg"],
                     "highlights": ["images/portfolio-item-3.jpg"],
                     "videos": []
                 }
+            },
+            "sangeet-night": {
+                title: "Sangeet Night",
+                category: "Event Photography",
+                tabs: {
+                    "engagement": ["images/portfolio-item-9.jpg"],
+                    "pre-wedding": ["images/portfolio-item-9.jpg"],
+                    "sangeet": ["images/portfolio-item-9.jpg", "images/recent-1.jpg", "images/portfolio-user-1.jpg"],
+                    "marriage": ["images/portfolio-item-9.jpg"],
+                    "reception": ["images/portfolio-item-9.jpg"],
+                    "highlights": ["images/portfolio-item-9.jpg"],
+                    "videos": []
+                }
+            },
+            "corporate-events": {
+                title: "Corporate Events",
+                category: "Professional Event Coverage",
+                tabs: {
+                    "interviews": ["images/corporate-interview.png"],
+                    "podcasts": ["images/corporate-podcast.png"],
+                    "seminars": ["images/corporate-seminar.png"],
+                    "media": ["images/corporate-media.png"]
+                }
             }
-            // Add other cases as needed
         };
 
         const currentProject = portfolioData[projectId];
@@ -311,9 +333,44 @@ document.addEventListener('DOMContentLoaded', () => {
             projectTitle.innerHTML = `${currentProject.title}`;
             document.getElementById('project-category').innerText = currentProject.category;
 
-            // Tab Switching Logic
-            const tabs = document.querySelectorAll('.tab-btn');
+            // Tab Definitions (Display Names)
+            const tabDisplayNames = {
+                "engagement": "Engagement",
+                "pre-wedding": "Pre-Wedding",
+                "sangeet": "Sangeet",
+                "marriage": "Marriage",
+                "reception": "Reception",
+                "highlights": "Highlights",
+                "videos": "Videos",
+                "interviews": "1-to-1 Interviews",
+                "podcasts": "Podcasts",
+                "seminars": "Seminars & Summits",
+                "media": "Press & Media"
+            };
+
+            // Dynamic Tab Generation
+            const tabsContainer = document.getElementById('portfolio-tabs');
             const galleryContainer = document.getElementById('gallery-container');
+
+            // Clear existing tabs
+            if (tabsContainer) tabsContainer.innerHTML = '';
+
+            const categoryKeys = Object.keys(currentProject.tabs);
+
+            categoryKeys.forEach((key, index) => {
+                const btn = document.createElement('button');
+                btn.className = `tab-btn ${index === 0 ? 'active' : ''}`;
+                btn.dataset.tab = key;
+                btn.innerText = tabDisplayNames[key] || key.charAt(0).toUpperCase() + key.slice(1);
+
+                btn.addEventListener('click', () => {
+                    document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+                    btn.classList.add('active');
+                    loadGallery(key);
+                });
+
+                if (tabsContainer) tabsContainer.appendChild(btn);
+            });
 
             function loadGallery(tabName) {
                 galleryContainer.innerHTML = ''; // Clear existing
@@ -333,18 +390,9 @@ document.addEventListener('DOMContentLoaded', () => {
             }
 
             // Initial Load
-            loadGallery('engagement');
-
-            tabs.forEach(tab => {
-                tab.addEventListener('click', () => {
-                    // Remove active class
-                    tabs.forEach(t => t.classList.remove('active'));
-                    // Add active class
-                    tab.classList.add('active');
-                    // Load content
-                    loadGallery(tab.dataset.tab);
-                });
-            });
+            if (categoryKeys.length > 0) {
+                loadGallery(categoryKeys[0]);
+            }
 
         } else {
             // Fallback if ID not found
