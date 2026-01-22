@@ -6,6 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pavani Studios | Hyderabad's Top Wedding Photographers</title>
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/additional-styles.css">
+    <link rel="stylesheet" href="css/slideshow.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <!-- Performance Preloads -->
     <link rel="preload" as="image" href="images/hero-bg.jpg" fetchpriority="high">
@@ -46,18 +48,43 @@
         </div>
     </header>
 
-    <!-- Hero Section -->
-    <section id="home" class="hero-section">
-        <!-- Optimized LCP: Img tag instead of background-image -->
-        <img src="images/hero-bg.jpg" alt="Pavani Studios Background" class="hero-bg-img" fetchpriority="high"
-            style="position: absolute; top:0; left:0; width: 100%; height: 100%; object-fit: cover; z-index: -2;">
-        <div class="hero-overlay"></div>
+    <!-- Cinematic Hero Section with Video Background & Glassmorphism -->
+    <section id="home" class="hero-section hero-cinematic">
+        <!-- Background Video with Fallback -->
+        <video autoplay muted loop playsinline class="hero-video" id="heroVideo" poster="images/hero-bg.jpg">
+            <source src="videos/hero-wedding.mp4" type="video/mp4">
+            <source src="videos/hero-wedding.webm" type="video/webm">
+        </video>
+
+        <!-- Fallback Image (shows if video fails to load) -->
+        <img src="images/hero-bg.jpg" alt="Pavani Studios Background" class="hero-bg-img hero-fallback-img"
+            id="heroFallback" fetchpriority="high"
+            style="position: absolute; top:50%; left:50%; min-width: 100%; min-height: 100%; width: auto; height: auto; transform: translate(-50%, -50%); object-fit: cover; z-index: -2; display: none;">
+
+        <!-- Glassmorphism Overlay -->
+        <div class="hero-glass-overlay"></div>
+
         <div class="hero-content container">
-            <h1 class="fade-in">Capturing Life's <br><span class="gold-text">Most Beautiful</span> Moments</h1>
-            <p class="fade-in">Welcome to Pavani Studios – Where Your Memories Become Timeless Art. Based in Hyderabad,
-                Warangal & Parkal.</p>
-            <div class="scroll-down fade-in">
-                <span>Scroll Down</span>
+            <h1 class="hero-title fade-in">
+                Capturing Life's<br>
+                <span class="gold-text">Most Beautiful</span> Moments
+            </h1>
+            <p class="hero-subtitle fade-in">
+                Premium Wedding & Cinematic Photography<br>
+                <span class="hero-locations">Hyderabad | Warangal | Across India</span>
+            </p>
+
+            <!-- Glass CTA Card -->
+            <div class="hero-cta-glass fade-in">
+                <a href="#portfolio" class="btn-primary-glass">Explore Our Work</a>
+                <a href="https://wa.me/918341847112?text=Hi%2C%20I%20want%20to%20check%20availability"
+                    class="btn-whatsapp-glass" target="_blank">
+                    <i class="fab fa-whatsapp"></i> Check Availability
+                </a>
+            </div>
+
+            <div class="scroll-indicator fade-in">
+                <span>Scroll to Discover</span>
                 <i class="fas fa-chevron-down"></i>
             </div>
         </div>
@@ -120,7 +147,82 @@
         </div>
     </section>
 
+    <!-- Premium Photo Slideshow -->
+    <section class="photo-slideshow-section section-padding">
+        <div class="container">
+            <h2 class="section-title fade-in">Our <span>Photography</span></h2>
+            <p class="fade-in"
+                style="text-align: center; max-width: 700px; margin: 0 auto 50px; color: var(--text-muted);">
+                Explore our latest work through this curated collection of wedding moments
+            </p>
+
+            <div class="slideshow-container">
+                <!-- Slide 1 -->
+                <div class="photo-slide active">
+                    <img src="images/portfolio-user-1.jpg" alt="Wedding Photography 1" loading="lazy">
+                    <div class="slide-caption">
+                        <h3>Timeless Elegance</h3>
+                        <p>Traditional Wedding Ceremony</p>
+                    </div>
+                </div>
+
+                <!-- Slide 2 -->
+                <div class="photo-slide">
+                    <img src="images/portfolio-item-3.jpg" alt="Wedding Photography 2" loading="lazy">
+                    <div class="slide-caption">
+                        <h3>Love in Every Frame</h3>
+                        <p>Pre-Wedding Shoot</p>
+                    </div>
+                </div>
+
+                <!-- Slide 3 -->
+                <div class="photo-slide">
+                    <img src="images/portfolio-item-9.jpg" alt="Wedding Photography 3" loading="lazy">
+                    <div class="slide-caption">
+                        <h3>Celebration Moments</h3>
+                        <p>Sangeet Night</p>
+                    </div>
+                </div>
+
+                <!-- Slide 4 -->
+                <div class="photo-slide">
+                    <img src="images/portfolio-item-5.jpg" alt="Wedding Photography 4" loading="lazy">
+                    <div class="slide-caption">
+                        <h3>Precious Promises</h3>
+                        <p>Engagement Ceremony</p>
+                    </div>
+                </div>
+
+                <!-- Slide 5 -->
+                <div class="photo-slide">
+                    <img src="images/portfolio-item-8.jpg" alt="Wedding Photography 5" loading="lazy">
+                    <div class="slide-caption">
+                        <h3>Joyful Celebrations</h3>
+                        <p>Reception Evening</p>
+                    </div>
+                </div>
+
+                <!-- Navigation Arrows -->
+                <button class="slide-nav prev" onclick="changePhotoSlide(-1)">❮</button>
+                <button class="slide-nav next" onclick="changePhotoSlide(1)">❯</button>
+
+                <!-- Dots Indicator -->
+                <div class="slide-dots">
+                    <span class="dot active" onclick="goToPhotoSlide(0)"></span>
+                    <span class="dot" onclick="goToPhotoSlide(1)"></span>
+                    <span class="dot" onclick="goToPhotoSlide(2)"></span>
+                    <span class="dot" onclick="goToPhotoSlide(3)"></span>
+                    <span class="dot" onclick="goToPhotoSlide(4)"></span>
+                </div>
+
+                <!-- Autoplay Control -->
+                <button class="autoplay-toggle" onclick="togglePhotoAutoplay()">⏸ Pause</button>
+            </div>
+        </div>
+    </section>
+
     <!-- Why Choose Us (Stats) -->
+
     <section class="stats-section section-padding">
         <div class="container stats-grid">
             <div class="stat-item fade-in">
@@ -366,6 +468,29 @@
             </div>
         </div>
     </footer>
+
+    <!-- Sticky Conversion Bar (Mobile-Optimized) -->
+    <div class="sticky-conversion-bar" id="conversionBar">
+        <div class="conversion-content">
+            <span class="conversion-text">
+                <i class="fas fa-calendar-check"></i>
+                <span class="desktop-text">Available dates booking fast!</span>
+                <span class="mobile-text">Book Now!</span>
+            </span>
+            <div class="conversion-actions">
+                <a href="https://wa.me/918341847112?text=Hi%2C%20I%20want%20to%20check%20availability"
+                    class="btn-conversion-whatsapp" target="_blank">
+                    <i class="fab fa-whatsapp"></i> <span class="desktop-text">WhatsApp</span><span
+                        class="mobile-text">Chat</span>
+                </a>
+                <a href="tel:8106923334" class="btn-conversion-contact">
+                    <i class="fas fa-phone-alt"></i>
+                    <span class="desktop-text">Call Now</span>
+                    <span class="mobile-text">Call</span>
+                </a>
+            </div>
+        </div>
+    </div>
 
     <script src="js/script.js"></script>
 </body>

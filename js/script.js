@@ -27,7 +27,7 @@ const initTheme = () => {
     if (themeBtn) {
         themeBtn.addEventListener('click', () => {
             const isLight = html.getAttribute('data-theme') === 'light';
-            
+
             if (isLight) {
                 html.removeAttribute('data-theme');
                 localStorage.setItem('theme', 'dark');
@@ -45,7 +45,7 @@ const initTheme = () => {
 
 document.addEventListener('DOMContentLoaded', () => {
     initTheme();
-    
+
     // Navigation Scroll Effect
     const header = document.querySelector('.main-header');
 
@@ -153,7 +153,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const fadeElements = document.querySelectorAll('.fade-in');
     fadeElements.forEach(el => observer.observe(el));
 
-    // Number Counter Animation
+    // Enhanced Counter Animation with Easing
     const counters = document.querySelectorAll('.counter-number');
     let hasAnimatedCounters = false;
 
@@ -163,22 +163,33 @@ document.addEventListener('DOMContentLoaded', () => {
         const counterObserver = new IntersectionObserver((entries) => {
             if (entries[0].isIntersecting && !hasAnimatedCounters) {
                 hasAnimatedCounters = true;
+
                 counters.forEach(counter => {
                     const target = parseInt(counter.getAttribute('data-target'));
-                    const duration = 2000; // 2 seconds
-                    const increment = target / (duration / 16);
-                    let current = 0;
+                    const duration = 2500; // 2.5 seconds for smoother feel
+                    const startTime = performance.now();
 
-                    const updateCounter = () => {
-                        current += increment;
-                        if (current < target) {
-                            counter.innerText = Math.ceil(current).toLocaleString('en-US');
+                    // Easing function (easeOutExpo)
+                    const easeOutExpo = (t) => {
+                        return t === 1 ? 1 : 1 - Math.pow(2, -10 * t);
+                    };
+
+                    const updateCounter = (currentTime) => {
+                        const elapsed = currentTime - startTime;
+                        const progress = Math.min(elapsed / duration, 1);
+                        const easedProgress = easeOutExpo(progress);
+
+                        const current = Math.floor(easedProgress * target);
+                        counter.innerText = current.toLocaleString('en-US');
+
+                        if (progress < 1) {
                             requestAnimationFrame(updateCounter);
                         } else {
                             counter.innerText = target.toLocaleString('en-US') + '+';
                         }
                     };
-                    updateCounter();
+
+                    requestAnimationFrame(updateCounter);
                 });
             }
         }, { threshold: 0.5 });
@@ -442,4 +453,149 @@ document.addEventListener('DOMContentLoaded', () => {
             if (projectTitle) projectTitle.innerText = "Project Not Found";
         }
     }
+
+    // ==========================================
+    // STICKY CONVERSION BAR
+    // ==========================================
+    const conversionBar = document.getElementById('conversionBar');
+    if (conversionBar) {
+        let lastScroll = 0;
+
+        window.addEventListener('scroll', () => {
+            const currentScroll = window.pageYOffset;
+
+            // Show after scrolling 500px down
+            if (currentScroll > 500) {
+                conversionBar.classList.add('visible');
+            } else {
+                conversionBar.classList.remove('visible');
+            }
+
+            lastScroll = currentScroll;
+        });
+    }
+
+    // ==========================================
+    // VIDEO BACKGROUND FALLBACK HANDLER
+    // ==========================================
+    const heroVideo = document.getElementById('heroVideo');
+    const heroFallback = document.getElementById('heroFallback');
+
+    if (heroVideo && heroFallback) {
+        // Handle video load error - show fallback image
+        heroVideo.addEventListener('error', () => {
+            heroVideo.style.display = 'none';
+            heroFallback.style.display = 'block';
+        });
+
+        // Check if video can play
+        heroVideo.addEventListener('canplay', () => {
+            heroFallback.style.display = 'none';
+        });
+
+        // Fallback if video doesn't start in 3 seconds
+        setTimeout(() => {
+            if (heroVideo.paused || heroVideo.readyState < 3) {
+                heroVideo.style.display = 'none';
+                heroFallback.style.display = 'block';
+            }
+        }, 3000);
+    }
+
+    // ==========================================
+    // PORTFOLIO MASONRY FILTERING
+    // ==========================================
+    const filterBtns = document.querySelectorAll('.filter-btn');
+    const masonryItems = document.querySelectorAll('.masonry-item');
+
+    filterBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+            // Update active state
+            filterBtns.forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+
+            const filter = btn.dataset.filter;
+
+            masonryItems.forEach(item => {
+                const category = item.dataset.category;
+
+                if (filter === 'all' || category === filter) {
+                    item.classList.remove('hidden');
+                    setTimeout(() => item.style.opacity = '1', 10);
+                } else {
+                    item.style.opacity = '0';
+                    setTimeout(() => item.classList.add('hidden'), 300);
+                }
+            });
+        });
+    });
 });
+
+// ==========================================
+// PHOTO SLIDESHOW LOGIC
+// ==========================================
+let currentPhotoSlide = 0;
+let photoAutoplayInterval;
+let isPhotoAutoplayRunning = true;
+
+function showPhotoSlide(n) {
+    const slides = document.querySelectorAll('.photo-slide');
+    const dots = document.querySelectorAll('.slide-dots .dot');
+
+    if (slides.length === 0) return;
+
+    if (n >= slides.length) currentPhotoSlide = 0;
+    else if (n < 0) currentPhotoSlide = slides.length - 1;
+    else currentPhotoSlide = n;
+
+    slides.forEach(slide => slide.classList.remove('active'));
+    dots.forEach(dot => dot.classList.remove('active'));
+
+    slides[currentPhotoSlide].classList.add('active');
+    if (dots.length > 0) dots[currentPhotoSlide].classList.add('active');
+}
+
+function changePhotoSlide(direction) {
+    showPhotoSlide(currentPhotoSlide + direction);
+    stopPhotoAutoplay(); // Stop on manual interaction
+}
+
+function goToPhotoSlide(n) {
+    showPhotoSlide(n);
+    stopPhotoAutoplay(); // Stop on manual interaction
+}
+
+function startPhotoAutoplay() {
+    if (document.querySelectorAll('.photo-slide').length === 0) return;
+
+    photoAutoplayInterval = setInterval(() => {
+        showPhotoSlide(currentPhotoSlide + 1);
+    }, 5000); // Change slide every 5 seconds
+
+    isPhotoAutoplayRunning = true;
+    const toggleBtn = document.querySelector('.autoplay-toggle');
+    if (toggleBtn) toggleBtn.textContent = '⏸ Pause';
+}
+
+function stopPhotoAutoplay() {
+    clearInterval(photoAutoplayInterval);
+    isPhotoAutoplayRunning = false;
+    const toggleBtn = document.querySelector('.autoplay-toggle');
+    if (toggleBtn) toggleBtn.textContent = '▶ Play';
+}
+
+function togglePhotoAutoplay() {
+    if (isPhotoAutoplayRunning) {
+        stopPhotoAutoplay();
+    } else {
+        startPhotoAutoplay();
+    }
+}
+
+// Initialize photo slideshow on page load
+document.addEventListener('DOMContentLoaded', () => {
+    if (document.querySelector('.slideshow-container')) {
+        startPhotoAutoplay();
+    }
+});
+

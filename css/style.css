@@ -1,9 +1,18 @@
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap');
 
 :root {
-    /* Premium Dark Mode (Default) */
+    /* Premium Dark Mode (Default) - Refined Luxury Palette */
     --primary-color: #D4AF37;
-    /* Gold - Luxury Accent */
+    /* Gold Champagne - Primary Accent */
+    --gold-rose: #C9A961;
+    /* Secondary Gold - Warmer Variant */
+    --charcoal: #2A2A2A;
+    /* Deep Charcoal for contrasts */
+    --ivory: #FCF8F8;
+    /* Ivory - for light text needs */
+    --silver-mist: #E8E8E8;
+    /* Silver Mist - subtle highlights */
+
     --bg-color: #050505;
     /* Deepest Charcoal */
     --bg-secondary: #0a0a0a;
@@ -30,18 +39,21 @@
     --shadow-color: rgba(0, 0, 0, 0.6);
 
     --font-main: 'Montserrat', sans-serif;
+    --font-heading: 'Playfair Display', serif;
+    /* Elegant serif for dark mode headings */
     --transition: all 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
     /* Silk smooth */
 
     --spacing-xs: 8px;
     --spacing-sm: 16px;
-    --spacing-md: 24px;
-    --spacing-lg: 48px;
     --spacing-xl: 96px;
 }
 
 /* Premium Light Mode (Class-One) */
 [data-theme="light"] {
+    --font-heading: 'Playfair Display', serif;
+    /* CLASSIC Luxury Toggle */
+
     /* Backgrounds: Expensive & Refined */
     --bg-color: #FCF8F8;
     /* Warm Porcelain */
@@ -376,6 +388,157 @@ img {
         /* Subtle float */
     }
 }
+
+/* ============================================ */
+/* CINEMATIC HERO WITH GLASSMORPHISM */
+/* ============================================ */
+
+/* Enhanced Hero with Video/Image Support */
+.hero-cinematic {
+    position: relative;
+    height: 100vh;
+    overflow: hidden;
+}
+
+.hero-video,
+.hero-fallback-img {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    min-width: 100%;
+    min-height: 100%;
+    width: auto;
+    height: auto;
+    transform: translate(-50%, -50%);
+    object-fit: cover;
+    z-index: -2;
+}
+
+.hero-fallback-img {
+    display: none;
+    /* Show via JS if video fails */
+}
+
+.hero-glass-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg,
+            rgba(0, 0, 0, 0.7) 0%,
+            rgba(42, 42, 42, 0.5) 50%,
+            rgba(0, 0, 0, 0.8) 100%);
+    backdrop-filter: blur(2px);
+    z-index: -1;
+}
+
+.hero-title {
+    font-family: var(--font-heading);
+    font-size: clamp(2.5rem, 8vw, 5rem);
+    font-weight: 400;
+    /* lighter for serif elegance */
+    line-height: 1.2;
+    margin-bottom: 1.5rem;
+    text-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+}
+
+.hero-subtitle {
+    font-size: clamp(1rem, 2vw, 1.3rem);
+    font-weight: 300;
+    color: var(--silver-mist);
+    margin-bottom: 3rem;
+    line-height: 1.6;
+}
+
+.hero-locations {
+    display: inline-block;
+    font-size: 0.9em;
+    color: var(--primary-color);
+    font-weight: 500;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-top: 0.5rem;
+}
+
+/* Glass CTA Container */
+.hero-cta-glass {
+    display: inline-flex;
+    gap: 1.5rem;
+    padding: 2rem;
+    background: rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    border-radius: 20px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+    margin-bottom: 2rem;
+}
+
+.btn-primary-glass,
+.btn-whatsapp-glass {
+    padding: 16px 32px;
+    border-radius: 8px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+    font-size: 0.95rem;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.btn-primary-glass {
+    background: var(--primary-color);
+    color: var(--charcoal);
+    border: none;
+}
+
+.btn-primary-glass:hover {
+    background: var(--gold-rose);
+    transform: translateY(-2px);
+    box-shadow: 0 12px 24px rgba(212, 175, 55, 0.4);
+}
+
+.btn-whatsapp-glass {
+    background: rgba(37, 211, 102, 0.15);
+    color: #25D366;
+    border: 1.5px solid #25D366;
+}
+
+.btn-whatsapp-glass:hover {
+    background: #25D366;
+    color: white;
+    transform: translateY(-2px);
+    box-shadow: 0 12px 24px rgba(37, 211, 102, 0.3);
+}
+
+.scroll-indicator {
+    position: absolute;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: var(--text-muted);
+    font-size: 0.9rem;
+    animation: bounce 2s infinite;
+    gap: 0.5rem;
+}
+
+@media (max-width: 768px) {
+    .hero-cta-glass {
+        flex-direction: column;
+        gap: 1rem;
+        padding: 1.5rem;
+    }
+
+    .btn-primary-glass,
+    .btn-whatsapp-glass {
+        width: 100%;
+        justify-content: center;
+    }
+}
+
 
 /* Timeline / Our Journey - Next Level */
 .timeline-section {
