@@ -326,13 +326,14 @@ document.addEventListener('DOMContentLoaded', () => {
                 title: "Ajay weds Sweety",
                 category: "Wedding Photography",
                 tabs: {
-                    "engagement": ["images/portfolio-item-5.jpg", "images/portfolio-item-11.jpg", "images/portfolio-item-12.jpg", "images/portfolio-item-7.jpg"],
-                    "pre-wedding": ["images/portfolio-item-3.jpg", "images/portfolio-user-2.jpg", "images/portfolio-item-4.jpg", "images/client-anita-rohan.png"],
-                    "sangeet": ["images/portfolio-item-9.jpg", "images/portfolio-user-1.jpg", "images/recent-1.jpg"],
-                    "marriage": ["images/portfolio-user-1.jpg", "images/portfolio-item-5.jpg", "images/portfolio-item-8.jpg", "images/client-sita-ram.png"],
-                    "reception": ["images/portfolio-item-8.jpg", "images/portfolio-item-10.jpg", "images/recent-2.jpg"],
-                    "highlights": ["images/portfolio-user-1.jpg", "images/portfolio-item-12.jpg", "images/hero-bg.jpg"],
-                    "videos": [] // Video placeholders to be added
+                    "highlights": [
+                        "Wedding/_52A2149.jpg", "Wedding/_52A2377.jpg", "Wedding/_52A2579 2.jpg", "Wedding/_52A2579.jpg", "Wedding/_52A2712.jpg", "Wedding/_52A2923.jpg",
+                        "Wedding/_52A2930.jpg", "Wedding/_52A2931.jpg", "Wedding/_52A3327.jpg", "Wedding/_52A3328.jpg", "Wedding/_52A3341.jpg", "Wedding/_52A3755.jpg",
+                        "Wedding/_52A3766.jpg", "Wedding/_52A3785.jpg", "Wedding/_52A3805.jpg", "Wedding/_52A3855.jpg", "Wedding/_52A3857.jpg", "Wedding/_52A4452.jpg",
+                        "Wedding/_52A4464.jpg", "Wedding/_52A4702.jpg", "Wedding/_52A4709.jpg", "Wedding/_52A4721.jpg", "Wedding/_52A4724.jpg", "Wedding/_52A4731.jpg",
+                        "Wedding/_52A4790.jpg", "Wedding/_52A4823.jpg", "Wedding/_52A4828.jpg", "Wedding/_52A4841.jpg", "Wedding/_52A4853 2.jpg", "Wedding/_52A4853.jpg",
+                        "Wedding/_52A4864.jpg", "Wedding/_52A4867.jpg"
+                    ]
                 }
             },
             "rohan-meera": {
@@ -352,23 +353,43 @@ document.addEventListener('DOMContentLoaded', () => {
                 title: "70th Wedding Anniversary",
                 category: "Event Photography",
                 tabs: {
-                    "father-mother-70-years": [
+                    "highlighted-shots": [
                         "images/70th-anniversary/221A1912.jpg", "images/70th-anniversary/221A1926.jpg", "images/70th-anniversary/221A1946.jpg", "images/70th-anniversary/221A1955.jpg", "images/70th-anniversary/221A1961.jpg",
                         "images/70th-anniversary/221A1965.jpg", "images/70th-anniversary/221A1968.jpg", "images/70th-anniversary/221A2011.jpg", "images/70th-anniversary/221A2024.jpg", "images/70th-anniversary/221A2119.jpg",
                         "images/70th-anniversary/221A2134.jpg", "images/70th-anniversary/221A2140.jpg", "images/70th-anniversary/221A2141.jpg", "images/70th-anniversary/NNK04293.jpg", "images/70th-anniversary/NNK04297.jpg",
                         "images/70th-anniversary/NNK04304%202.jpg", "images/70th-anniversary/NNK04304.jpg", "images/70th-anniversary/NNK04317%202.jpg", "images/70th-anniversary/NNK04317.jpg", "images/70th-anniversary/NNK04331%202.jpg",
-                        "images/70th-anniversary/NNK04331.jpg", "images/70th-anniversary/NNK04357%202.jpg", "images/70th-anniversary/NNK04357.jpg", "images/70th-anniversary/NNK04359.jpg", "images/70th-anniversary/NNK04365.jpg"
-                    ],
-                    "sons-and-grandchildren": [
+                        "images/70th-anniversary/NNK04331.jpg", "images/70th-anniversary/NNK04357%202.jpg", "images/70th-anniversary/NNK04357.jpg", "images/70th-anniversary/NNK04359.jpg", "images/70th-anniversary/NNK04365.jpg",
                         "images/70th-anniversary/221A2181.jpg", "images/70th-anniversary/221A2194.jpg", "images/70th-anniversary/221A2196.jpg", "images/70th-anniversary/221A2241.jpg", "images/70th-anniversary/221A2242.jpg",
                         "images/70th-anniversary/221A2245.jpg", "images/70th-anniversary/221A2264.jpg", "images/70th-anniversary/221A2274.jpg", "images/70th-anniversary/NNK04392.jpg", "images/70th-anniversary/NNK04399.jpg",
                         "images/70th-anniversary/NNK04403.jpg", "images/70th-anniversary/NNK04416.jpg", "images/70th-anniversary/NNK04474.jpg", "images/70th-anniversary/NNK04478.jpg", "images/70th-anniversary/NNK04480.jpg",
-                        "images/70th-anniversary/NNK04484.jpg", "images/70th-anniversary/NNK04518.jpg", "images/70th-anniversary/NNK04530.jpg", "images/70th-anniversary/NNK04542.jpg", "images/70th-anniversary/NNK04551.jpg"
-                    ],
-                    "sons-photoshoot": [
+                        "images/70th-anniversary/NNK04484.jpg", "images/70th-anniversary/NNK04518.jpg", "images/70th-anniversary/NNK04530.jpg", "images/70th-anniversary/NNK04542.jpg", "images/70th-anniversary/NNK04551.jpg",
                         "images/70th-anniversary/221A2359.jpg", "images/70th-anniversary/221A2383.jpg", "images/70th-anniversary/221A2389.jpg", "images/70th-anniversary/NNK04561.jpg", "images/70th-anniversary/NNK04579.jpg",
                         "images/70th-anniversary/NNK04601.jpg", "images/70th-anniversary/NNK04602.jpg", "images/70th-anniversary/NNK04621.jpg", "images/70th-anniversary/NNK04623.jpg", "images/70th-anniversary/NNK04638.jpg",
                         "images/70th-anniversary/NNK04639.jpg", "images/70th-anniversary/NNK04651.jpg", "images/70th-anniversary/NNK04658.jpg"
+                    ]
+                }
+            },
+            "haldi-event": {
+                title: "Haldi Event",
+                category: "Event Photography",
+                tabs: {
+                    "highlights": [
+                        "Halidi/_52A0296.jpg", "Halidi/_52A0334.jpg", "Halidi/_52A0345.jpg", "Halidi/_52A0347.jpg", "Halidi/_52A0390.jpg",
+                        "Halidi/_52A0399.jpg", "Halidi/_52A0526.jpg", "Halidi/_52A0537.jpg", "Halidi/_52A0539.jpg", "Halidi/_52A0621.jpg",
+                        "Halidi/_52A0638.jpg", "Halidi/_52A0650.jpg", "Halidi/_52A0653.jpg", "Halidi/_52A0686.jpg", "Halidi/_52A2000.jpg",
+                        "Halidi/_52A2006.jpg", "Halidi/_52A2009.jpg", "Halidi/_52A2015.jpg", "Halidi/_52A2061.jpg"
+                    ]
+                }
+            },
+            "baby-shoot": {
+                title: "Baby Born Shoot",
+                category: "Kid's Photography",
+                tabs: {
+                    "highlights": [
+                        "Pre born shoot/DSC00881.JPG", "Pre born shoot/DSC00882.JPG", "Pre born shoot/DSC00893.JPG", "Pre born shoot/DSC00912.JPG",
+                        "Pre born shoot/DSC00916.JPG", "Pre born shoot/DSC00936.JPG", "Pre born shoot/DSC00941.JPG", "Pre born shoot/DSC00946.JPG",
+                        "Pre born shoot/DSC00957.JPG", "Pre born shoot/DSC00959.JPG", "Pre born shoot/DSC00965.JPG", "Pre born shoot/DSC00971.JPG",
+                        "Pre born shoot/DSC00973.JPG", "Pre born shoot/DSC00978.JPG", "Pre born shoot/DSC01035.JPG"
                     ]
                 }
             }
@@ -414,12 +435,8 @@ document.addEventListener('DOMContentLoaded', () => {
                     btn.className = `tab-btn ${index === 0 ? 'active' : ''}`;
                     btn.dataset.tab = tabKey;
 
-                    // Format tab label: father-mother-70-years -> Father & Mother (70 Years)
                     let label = tabKey;
-                    if (tabKey === 'father-mother-70-years') label = 'Father & Mother (70 Years)';
-                    else if (tabKey === 'sons-and-grandchildren') label = 'Sons & Grandchildren';
-                    else if (tabKey === 'sons-photoshoot') label = "Sons' Photoshoot";
-                    else label = tabKey.split('-').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' ');
+                    if (false) { } /* REMOVED OLD LABELS */
 
                     btn.innerText = label;
 
