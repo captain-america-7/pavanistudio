@@ -27,7 +27,7 @@ const initTheme = () => {
     if (themeBtn) {
         themeBtn.addEventListener('click', () => {
             const isLight = html.getAttribute('data-theme') === 'light';
-            
+
             if (isLight) {
                 html.removeAttribute('data-theme');
                 localStorage.setItem('theme', 'dark');
@@ -45,7 +45,7 @@ const initTheme = () => {
 
 document.addEventListener('DOMContentLoaded', () => {
     initTheme();
-    
+
     // Navigation Scroll Effect
     const header = document.querySelector('.main-header');
 
@@ -390,6 +390,18 @@ document.addEventListener('DOMContentLoaded', () => {
                         "Pre born shoot/DSC00916.JPG", "Pre born shoot/DSC00936.JPG", "Pre born shoot/DSC00941.JPG", "Pre born shoot/DSC00946.JPG",
                         "Pre born shoot/DSC00957.JPG", "Pre born shoot/DSC00959.JPG", "Pre born shoot/DSC00965.JPG", "Pre born shoot/DSC00971.JPG",
                         "Pre born shoot/DSC00973.JPG", "Pre born shoot/DSC00978.JPG", "Pre born shoot/DSC01035.JPG"
+                    ]
+                }
+            },
+            "maternity": {
+                title: "Maternity Shoot",
+                category: "Maternity Photography",
+                tabs: {
+                    "highlights": [
+                        "Maternity/00001.jpg", "Maternity/02.jpg", "Maternity/111.jpg",
+                        "Maternity/12x18 --01.jpg", "Maternity/18x12 -01.jpg",
+                        "Maternity/55.jpg", "Maternity/555.jpg", "Maternity/66.jpg",
+                        "Maternity/6X8-01.jpg", "Maternity/77.jpg"
                     ]
                 }
             }
